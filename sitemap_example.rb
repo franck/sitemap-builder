@@ -2,6 +2,9 @@
 # One sitemap = one Sitemap instance
 
 # Example below generate two sitemaps. One per languages (FR and DE)
+# and then generate a sitemap inde file with the location of these two sitemaps
+
+sitemap_index = SitemapBuilder::SitemapIndex.new()
 
 ["fr", "de"].each do |locale|
   
@@ -22,4 +25,7 @@
 
   sitemap.generate
   sitemap.ping_search_engines
+  sitemap_index.sitemaps << sitemap
 end
+
+sitemap_index.generate

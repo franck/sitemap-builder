@@ -28,8 +28,15 @@ Create a sitemap instance:
       :filename => "sitemap.yml",
       :ping_search_engines => true
     )
+
+    sitemap.add root_path
+    sitemap.add pages_path
+    Page.all.each do |page|
+      sitemap.add page_path(page)
+    end
+    sitemap.add url_for(:controller => "articles", :action => "index", :only_path => true)
   
-Add the following lines for the sitemap generation and ping search engines (if set to true):
+Then add the following lines for the sitemap generation and ping search engines (if set to true):
 
     sitemap.generate
     sitemap.ping_search_engines
@@ -46,6 +53,19 @@ I use whenever gem (git://github.com/javan/whenever.git) to schedule a new sitem
 
     
 A complete example file is available inside the plugin root directory : sitemap_example.rb
+
+Sitemap index
+=============
+
+A sitemap index builder is also provided. Example of config/sitemap.rb:
+
+sitemap_index = SitemapBuilder::SitemapIndex.new()
+sitemap = SitemapBuilder::Sitemap.new()
+sitemap.add root_path
+sitemap_index.sitemaps << sitemap
+sitemap_index.generate
+
+These lines create a sitemap.xml file and a sitemap_index.xml file in the public directory.
     
 Options
 =======
@@ -54,6 +74,7 @@ SitemapBuilder::Sitemap accepts several options :
 * debug: generate sitemap files, verbose, does not ping search engines even if set to true (default: false)
 * host: base url of your website. don't forget the http:// (default: "http://localhost:3000")
 * filename: sitemap name (default: "sitemap.xml")
+* sitemap_folder: indicate a folder where the sitemap is located (default: "", example: "sitemaps")
 * ping_search_engines: ping google, yahoo, bing and ask.com (default: false)
 
 

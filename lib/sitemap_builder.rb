@@ -22,7 +22,7 @@ module SitemapBuilder
     
     def add(link, options={})
       link = Link.generate(link, @host, options)
-      p link if @debug
+      p link[:loc] if @debug
       @links << link
     end
         

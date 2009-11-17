@@ -3,6 +3,8 @@ require 'sitemap_builder/helper'
 
 module SitemapBuilder  
   class Sitemap  
+    attr_accessor :links
+    
     def initialize(options={})
       options = { 
         :debug => false,

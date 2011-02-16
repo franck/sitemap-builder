@@ -21,3 +21,13 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name = "sitemap-builder"
+  gem.summary = "Rails plugins to build sitemap.xml"
+  gem.description = "Rails plugins to build sitemap.xml"
+  gem.email = "franck.dagostini@gmail.com"
+  gem.homepage = "http://github.com/franck/sitemap-builder"
+  gem.authors = ["Franck D'agostini"]
+end

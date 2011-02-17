@@ -12,7 +12,7 @@ Installation
 
 no gem for now.
 
-    script/plugin install git://github.com/franck/sitemap-builder.git
+    script/plugin install git://github.com/franck/sitemap_builder.git
 
 
 Usage

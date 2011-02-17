@@ -1,3 +1,6 @@
+require 'sitemap_builder'
+require 'rails'
+
 module SitemapBuilder
   class Railtie < Rails::Railtie
     railtie_name :sitemap_builder

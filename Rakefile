@@ -1,9 +1,17 @@
+require 'rubygems'
+require 'bundler/setup'
 require 'rake'
+require 'rake/gempackagetask'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
 desc 'Default: run unit tests.'
 task :default => :test
+
+gemspec = File.expand_path("../sitemap-builder.gemspec", __FILE__)
+if File.exists? gemspec
+  Rake::GemPackageTask.new(eval(File.read("sitemap-builder.gemspec"))) { |pkg| }
+end
 
 desc 'Test the sitemap_builder plugin.'
 Rake::TestTask.new(:test) do |t|
